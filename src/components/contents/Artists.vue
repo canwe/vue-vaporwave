@@ -165,7 +165,6 @@
   .itemInfo {
     width: 100%;
     height: 150px;
-    font-family: 'Inconsolata';
     font-weight: bold;
     font-size: 2.5em;
     text-align: center;
