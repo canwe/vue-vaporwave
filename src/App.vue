@@ -13,6 +13,7 @@
     
     <!-- Footer | Static -->
     <app-footer></app-footer>
+    <music-nav></music-nav>
 
   </v-app>
 </template>
@@ -21,15 +22,19 @@
   import ToolBar from './components/skeleton/ToolBar.vue'
   import Drawer from './components/skeleton/Drawer.vue'
   import Footer from './components/skeleton/Footer.vue'
+  import MusicNav from './components/skeleton/MusicNav.vue'
   
   export default {
     components: {
       'app-toolbar': ToolBar,
       'app-drawer': Drawer,
-      'app-footer': Footer
+      'app-footer': Footer,
+      'music-nav': MusicNav
     },
     data () {
       return {
+        e3: 1,
+        e31: true
       }
     }
   }

@@ -6,6 +6,7 @@ import Catalogue from '../components/contents/Catalogue.vue'
 import Register from '../components/contents/Register.vue'
 import SignIn from '../components/contents/Signin.vue'
 import Artists from '../components/contents/Artists.vue'
+import TestArea from '../components/contents/TestArea.vue'
 
 Vue.use(Router)
 
@@ -18,6 +19,7 @@ export default new Router({
     {path: '/catalogue', component: Catalogue},
     {path: '/register', component: Register},
     {path: '/signin', component: SignIn},
-    {path: '/artists', component: Artists}
+    {path: '/artists', component: Artists},
+    {path: '/test', component: TestArea}
   ]
 })

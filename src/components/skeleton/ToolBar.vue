@@ -15,13 +15,23 @@
         <v-btn class="hidden-xs-only" flat @click.native.stop="aboutDialog = true">
           About
         </v-btn>
+        <v-menu :close-on-content-click="false">
+          <v-btn class="hidden-xs-only" flat slot="activator">
+          Volume ({{volumeBar}})
+          </v-btn>
+          <v-card style="width: 400px">
+            <v-subheader>Media volume</v-subheader>
+            <v-card-text>
+              <v-slider prepend-icon="volume_up" v-model="volumeBar"></v-slider>
+            </v-card-text>
+          </v-card>
+        </v-menu>
         <v-btn class="hidden-xs-only" flat @click.stop="togglePlayer">
-          Show Player
+          {{showHide}}
         </v-btn>
         <v-btn class="hidden-md-and-up" flat @click.stop="togglePlayer">
           <v-icon>queue_music</v-icon>
         </v-btn>
-        <m-button></m-button>
       </v-toolbar-items>
     </v-toolbar>
 
@@ -42,16 +52,24 @@
 
 <script>
   import { bus } from '../../main'
-  import MusicButton from './MusicButton.vue'
   export default {
-    components: {
-      'm-button': MusicButton
-    },
     data () {
       return {
+        volumeBar: 0,
         aboutDialog: false,
         drawer: false,
-        player: false
+        player: true
+      }
+    },
+    created () {
+      bus.$on('setDefaultVolume', (data) => {
+        this.volumeBar = data * 100
+      })
+    },
+    computed: {
+      showHide () {
+        if (this.player) return 'Hide Player'
+        else return 'Show Player'
       }
     },
     methods: {
@@ -60,8 +78,13 @@
         bus.$emit('toggledDrawer', this.drawer)
       },
       togglePlayer: function () {
-        this.player = true
+        this.player = !this.player
         bus.$emit('toggledPlayer', this.player)
+      }
+    },
+    watch: {
+      volumeBar: function (newVol, oldVol) {
+        bus.$emit('volumeChange', (newVol / 100))
       }
     }
   }
