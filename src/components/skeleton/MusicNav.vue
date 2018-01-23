@@ -74,7 +74,7 @@
 
   export default {
     created () {
-      this.audio.volume = 0.7
+      this.audio.volume = 0.5
       bus.$emit('setDefaultVolume', this.audio.volume)
       bus.$on('toggledPlayer', (data) => {
         this.player = data

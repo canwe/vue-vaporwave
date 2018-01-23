@@ -154,6 +154,7 @@
     display: flex;
     flex-wrap: wrap;
     cursor: pointer;
+    box-shadow: 3px 3px black;
   }
 
   .itemArt {

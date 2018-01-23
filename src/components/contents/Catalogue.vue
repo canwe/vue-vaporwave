@@ -36,7 +36,10 @@
         <div 
         class="cataChild" 
         :class="{
-          cataChildActive : (catalogue.indexOf(song) == currentSong)
+          cataChildHighlight : (
+              catalogue.indexOf(song) == currentSong 
+              || (mouseOver == true && song == currentSongHover)
+            )
         }" 
         v-for="(song, x) in catalogue" 
         :key="x"
@@ -50,6 +53,8 @@
             playingToggle(true)
           } 
         "
+        @mouseover="currentSongHover = song; mouseOver = true;" 
+        @mouseleave="currentSongHover = -1; mouseOver = false;"
         v-show="song.song.toLowerCase().match(search.toLowerCase()) || 
           song.album.toLowerCase().match(search.toLowerCase()) || 
           song.artist.toLowerCase().match(search.toLowerCase())">
@@ -84,7 +89,9 @@
       return {
         pathToAudio: 'static/catalog/',
         catalogue: musicBank,
-        currentSong: null,
+        currentSong: 0,
+        currentSongHover: -1,
+        mouseOver: false,
         playing: false,
         search: ''
       }
@@ -168,18 +175,18 @@
     width: 182px;
     margin: 5px;
     text-align: center;
-    border: 1px solid rgb(167, 175, 148);
+    border: 1px solid rgb(114, 179, 184);
     cursor: pointer;
     box-shadow: 3px 3px black;
   }
 
-  .cataChildActive {
+  .cataChildHighlight {
     height: 320px;
     width: 182px;
     margin: 5px;
     text-align: center;
-    background: rgb(167, 175, 148);
-    border: 1px solid rgb(167, 175, 148);
+    background: rgb(114, 179, 184);
+    border: 1px solid rgb(114, 179, 184);
   }
 
   .cataImage {
@@ -231,7 +238,7 @@
       width: 40%;
     }
 
-    .cataChildActive {
+    .cataChildHighlight {
       width: 40%;
     }
 

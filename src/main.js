@@ -8,10 +8,7 @@ import 'vuetify/dist/vuetify.css'
 import App from './App'
 import router from './router'
 
-import FontAwesome from 'font-awesome/css/font-awesome.css'
-
 Vue.use(Vuetify)
-Vue.use(FontAwesome)
 
 Vue.config.productionTip = false
 

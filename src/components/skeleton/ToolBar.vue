@@ -37,13 +37,13 @@
 
     <v-dialog v-model="aboutDialog" max-width="390">
       <v-card>
-        <v-card-title class="headline" style="font-weight: bold">Author: Phi Hong</v-card-title>
+        <v-card-title class="headline" style="font-weight: bold">Author: Phi Nguyen</v-card-title>
         <v-card-media src="/static/nietzchehong.jpg" height="150px"></v-card-media>
         <v-card-text>
           <p>Disclaimer: I do not own any of the artistic content on the page.
-          This website is created as a tribute to the Vaporwave movement
+          This website was created as a tribute to the Vaporwave movement
           and not for any commercial purpose whatsoever.</p>
-          <p>Long live Vaporwave~</p>
+          <p>Enjoy the ａｅｓｔｈｅｔｉｃ</p>
         </v-card-text>
       </v-card>
     </v-dialog>
