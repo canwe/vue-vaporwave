@@ -101,8 +101,10 @@
       bus.$on('volumeChange', (data) => {
         this.audio.volume = data
       })
-      this.shuffleSong()
+      this.songCounter = 1
+      this.init()
       this.playBind()
+      this.playing = true
     },
     mounted () {
       this.init()
@@ -165,7 +167,7 @@
       skipInterval (direction) {
         direction === 0 ? this.audio.currentTime -= 10 : this.audio.currentTime += 10
       },
-      shuffleSong () {
+      shuffleSong (songNum) {
         this.pauseBind()
         let randRange = (min, max) => {
           if (max == null) {

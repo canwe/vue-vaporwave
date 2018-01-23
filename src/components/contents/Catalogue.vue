@@ -29,7 +29,7 @@
       <div id="instruction">
         <p>
           Click on a song to play, click on it again to pause or use the 
-          <strong>SHOW PLAYER</strong> button to interact with the playlist.
+          bottom panel music player to interact with the playlist.
         </p>
       </div>
       <div class="cataParent">
@@ -239,6 +239,19 @@
       font-size: 1.45em;
       text-align: center;
       display: block;
+    }
+
+    .cataChild {
+      width: 45%;
+    }
+
+    .cataChildActive {
+      width: 45%;
+    }
+
+    .cataImage {
+      width: 100%;
+      height: auto;
     }
   }
 </style>
