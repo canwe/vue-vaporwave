@@ -222,6 +222,19 @@
       display: block;
       align-items: center;
     }
+
+    .cataChild {
+      width: 45%;
+    }
+
+    .cataChildActive {
+      width: 45%;
+    }
+
+    .cataImage {
+      width: 100%;
+      height: auto;
+    }
   }
 
   @media (min-width: 600px) and (max-width: 1200px) {
@@ -239,19 +252,6 @@
       font-size: 1.45em;
       text-align: center;
       display: block;
-    }
-
-    .cataChild {
-      width: 45%;
-    }
-
-    .cataChildActive {
-      width: 45%;
-    }
-
-    .cataImage {
-      width: 100%;
-      height: auto;
     }
   }
 </style>
