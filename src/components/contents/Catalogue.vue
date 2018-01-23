@@ -223,12 +223,16 @@
       align-items: center;
     }
 
+    .cataParent {
+      width: 100%;
+    }
+
     .cataChild {
-      width: 45%;
+      width: 40%;
     }
 
     .cataChildActive {
-      width: 45%;
+      width: 40%;
     }
 
     .cataImage {
