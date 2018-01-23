@@ -151,6 +151,7 @@
     height: 300px;
     background: rgb(98, 98, 163);
     margin: 10px;
+    font-family: 'Inconsolata';
     display: flex;
     flex-wrap: wrap;
     cursor: pointer;
