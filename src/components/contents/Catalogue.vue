@@ -37,8 +37,8 @@
         class="cataChild" 
         :class="{
           cataChildHighlight : (
-              catalogue.indexOf(song) == currentSong 
-              || (mouseOver == true && song == currentSongHover)
+              catalogue.indexOf(song) == currentSong || 
+              (mouseOver == true && song == currentSongHover)
             )
         }" 
         v-for="(song, x) in catalogue" 

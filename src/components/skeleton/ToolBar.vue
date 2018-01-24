@@ -100,7 +100,7 @@
     },
     watch: {
       volumeBar: function (newVol, oldVol) {
-        bus.$emit('volumeChange', (newVol / 100))
+        bus.$emit('volumeChange', newVol / 100)
       }
     }
   }

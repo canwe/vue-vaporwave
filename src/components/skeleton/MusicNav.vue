@@ -101,7 +101,8 @@
       bus.$on('volumeChange', (data) => {
         this.audio.volume = data
       })
-      this.songCounter = 1
+      let selected = [0, 1, 7, 8, 10, 13, 27]
+      this.songCounter = selected[Math.floor(Math.random() * selected.length)]
       this.init()
       this.playBind()
       this.playing = true

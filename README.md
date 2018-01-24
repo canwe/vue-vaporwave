@@ -1,3 +1,5 @@
+# ATTENTION: The project will not work if downloaded due to several dependency issues. Please visit [this site](https://project-helios.herokuapp.com/) for the actual working app. However, feel free to explore my code in the repository.
+
 # vue-vaporwave
 
 > A Vue-powered Bandcamp-like website for music playing and information related to Vaporwave
@@ -5,10 +7,6 @@
 # Features:
 
 ## Hidden music player that runs across the router
-
-![alt text](https://raw.githubusercontent.com/phiboi/vue-vaporwave/master/git/001.jpg)
-
-![alt text](https://raw.githubusercontent.com/phiboi/vue-vaporwave/master/git/002.jpg)
 
 ~ Music playing remains absolute throughout the router
 
@@ -21,10 +19,6 @@
 ## Respond to viewport change - does not break on mobile or tablet view
 
 ## A music catalog that respond to the music player via two-way binding and vice-versa
-
-![alt text](https://raw.githubusercontent.com/phiboi/vue-vaporwave/master/git/005.jpg)
-
-![alt text](https://raw.githubusercontent.com/phiboi/vue-vaporwave/master/git/006.jpg)
 
 ~ Respond two-way to the music player and the "now playing" bar
 
