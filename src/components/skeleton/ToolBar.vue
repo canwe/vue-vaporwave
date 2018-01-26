@@ -15,6 +15,9 @@
         <v-btn class="hidden-xs-only" flat @click.native.stop="aboutDialog = true">
           About
         </v-btn>
+        <v-btn class="hidden-xs-only" flat router to="/catalogue">
+          Song Library
+        </v-btn>
         <v-menu :close-on-content-click="false">
           <v-btn class="hidden-xs-only" flat slot="activator">
           Volume ({{volumeBar}})
@@ -66,7 +69,6 @@
         volumeBar: this.$store.state.volume * 100,
         aboutDialog: false,
         drawer: false,
-        player: true,
         titleCounter: 0
       }
     },
@@ -81,6 +83,9 @@
         else if (this.titleCounter % 5 === 2) return 'IT\'S ALL IN YOUR HEAD ( ͡° ͜ʖ ( ͡° ͜ʖ ( ͡° ͜ʖ ( ͡° ͜ʖ ͡°) ͜ʖ ͡°)ʖ ͡°)ʖ ͡°)'
         else if (this.titleCounter % 5 === 3) return '☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐'
         else return '~~ａｅｓｔｈｅｔｉｃ ｄｒｅａｍ~~'
+      },
+      player () {
+        return this.$store.state.player
       }
     },
     methods: {
@@ -89,8 +94,7 @@
         bus.$emit('toggledDrawer', this.drawer)
       },
       togglePlayer: function () {
-        this.player = !this.player
-        bus.$emit('toggledPlayer', this.player)
+        this.$store.commit('togglePlayer')
       }
     },
     watch: {

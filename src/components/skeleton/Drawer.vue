@@ -38,7 +38,7 @@
       return {
         drawer: false,
         tilesList: [
-          {icon: 'library_music', title: 'Catalogue', link: '/catalogue'},
+          {icon: 'library_music', title: 'Song Library', link: '/catalogue'},
           {icon: 'people', title: 'Vaporwave Artists', link: '/artists'},
           {icon: 'translate', title: 'Vaporize Your Text', link: '/textgen'},
           {icon: 'info_outline', title: 'About Vaporwave', link: '/about'},

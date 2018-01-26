@@ -17,7 +17,6 @@
               target="_blank">
                 <span>{{catalogue[currentSong].song}}</span>
               </a>
-              
             </v-list-tile-title>
             <v-list-tile-sub-title>
               <a style="text-decoration: none; color: #ffffff;" 
@@ -70,9 +69,14 @@
 
 <script>
   import musicBank from '../../../static/js/musicBank'
+  import { bus } from '../../main'
+  import { mapState } from 'vuex'
 
   export default {
     created () {
+      bus.$emit('toggledPlayer', (data) => {
+        this.player = data
+      })
       this.audio.volume = this.$store.state.volume
       this.audio = new Audio(this.pathToAudio + this.catalogue[this.currentSong].path)
       this.init()
@@ -84,24 +88,13 @@
     },
     data () {
       return {
-        player: true,
         pathToAudio: 'static/catalog/',
         progress: 0,
         catalogue: musicBank,
         audio: new Audio()
       }
     },
-    computed: {
-      currentSong () {
-        return this.$store.state.currentSong
-      },
-      playing () {
-        return this.$store.state.playing
-      },
-      volume () {
-        return this.$store.state.volume
-      }
-    },
+    computed: mapState(['currentSong', 'playing', 'volume', 'player']),
     watch: {
       playing: function (newVal, oldVal) {
         if (newVal) this.audio.play()

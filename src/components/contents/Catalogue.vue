@@ -73,6 +73,7 @@
 
 <script>
   import musicBank from '../../../static/js/musicBank'
+  import { mapState } from 'vuex'
 
   export default {
     data () {
@@ -84,14 +85,7 @@
         search: ''
       }
     },
-    computed: {
-      currentSong () {
-        return this.$store.state.currentSong
-      },
-      playing () {
-        return this.$store.state.playing
-      }
-    },
+    computed: mapState(['currentSong', 'playing']),
     methods: {
       songChange (songIndex) {
         this.$store.commit('songChange', songIndex)
