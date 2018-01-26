@@ -73,35 +73,31 @@
 
 <script>
   import musicBank from '../../../static/js/musicBank'
-  import { bus } from '../../main'
 
   export default {
-    created () {
-      bus.$on('globalCurrentSong', (data) => {
-        this.currentSong = data
-      })
-      bus.$on('togglePlayingButton', (data) => {
-        this.playing = data
-      })
-      bus.$emit('getCurrentSong')
-    },
     data () {
       return {
         pathToAudio: 'static/catalog/',
         catalogue: musicBank,
-        currentSong: 0,
         currentSongHover: -1,
         mouseOver: false,
-        playing: false,
         search: ''
+      }
+    },
+    computed: {
+      currentSong () {
+        return this.$store.state.currentSong
+      },
+      playing () {
+        return this.$store.state.playing
       }
     },
     methods: {
       songChange (songIndex) {
-        bus.$emit('cataSongChange', songIndex)
+        this.$store.commit('songChange', songIndex)
       },
       playingToggle (bool) {
-        bus.$emit('togglePlayingCata', bool)
+        this.$store.commit('togglePlaying', bool)
       }
     }
   }

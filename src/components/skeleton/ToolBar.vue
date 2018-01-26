@@ -63,17 +63,12 @@
     },
     data () {
       return {
-        volumeBar: 0,
+        volumeBar: this.$store.state.volume * 100,
         aboutDialog: false,
         drawer: false,
         player: true,
         titleCounter: 0
       }
-    },
-    created () {
-      bus.$on('setDefaultVolume', (data) => {
-        this.volumeBar = data * 100
-      })
     },
     computed: {
       showHide () {
@@ -99,8 +94,8 @@
       }
     },
     watch: {
-      volumeBar: function (newVol, oldVol) {
-        bus.$emit('volumeChange', newVol / 100)
+      volumeBar: function (newVal, oldVal) {
+        this.$store.commit('volumeChange', newVal / 100)
       }
     }
   }
