@@ -111,6 +111,9 @@
         )
         this.init()
         this.audio.play()
+      },
+      audio: function (newVal, oldVal) {
+        newVal.volume = this.volume
       }
     },
     methods: {
