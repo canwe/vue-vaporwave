@@ -43,71 +43,41 @@
           :class="{'viewButton active' : !carouselViewButton}">All</button>
         </p>
       </div>
-      
-      <div v-show="!carouselView" id="normalMode">
-        <div class="cataParent">
-          <div 
-          class="cataChild" 
-          :class="{
-            cataChildHighlight : (
-                catalogue.indexOf(song) == currentSong || 
-                (mouseOver == true && song == currentSongHover)
-              )
-          }" 
-          v-for="(song, x) in catalogue" 
-          :key="x"
-          @click="playSong(song)"
-          @mouseover="currentSongHover = song; mouseOver = true;" 
-          @mouseleave="currentSongHover = -1; mouseOver = false;"
-          v-show="searchBool(song)">
-            <img 
-            :src="pathToAudio + song.logo" 
-            class="cataImage"
-            />
-            <p class="cataHeader">{{song.song}}</p>
-            <p>{{song.artist}}</p>
-            <p>{{song.album}}</p>
-          </div>
+
+      <div class="cataParent">
+        <div 
+        class="cataChild" 
+        :class="{
+          cataChildHighlight : (
+              processedCatalogue.indexOf(song) == currentSong || 
+              (mouseOver == true && song == currentSongHover)
+            )
+        }" 
+        v-for="(song, x) in processedCatalogue" 
+        :key="x"
+        @click="playSong(song)"
+        @mouseover="currentSongHover = song; mouseOver = true;" 
+        @mouseleave="currentSongHover = -1; mouseOver = false;"
+        v-show="searchBool(song)">
+          <img 
+          :src="pathToAudio + song.logo" 
+          class="cataImage"
+          />
+          <p class="cataHeader">{{song.song}}</p>
+          <p>{{song.artist}}</p>
+          <p>{{song.album}}</p>
         </div>
       </div>
 
-      <div v-show="carouselView" id="carouselMode">
-        
-        <div class="cataParent" v-show="i == currentPage" v-for="i in pageNum" :key="i">
-          <div 
-          class="cataChild" 
-          :class="{
-            cataChildHighlight : (
-                (i - 1) * viewPerPage + (j - 1) == currentSong || 
-                (mouseOver == true && currentSongHover == (i - 1) * viewPerPage + (j - 1))
-              )
-          }" 
-          v-for="j in itemsToProcess(i)" 
-          :key="j"
-          @click="playSong(catalogue[(i - 1) * viewPerPage + (j - 1)])"
-          @mouseover="currentSongHover = (i - 1) * viewPerPage + (j - 1); mouseOver = true" 
-          @mouseleave="currentSongHover = -1; mouseOver = false">
-            <img 
-            :src="pathToAudio + catalogue[(i - 1) * viewPerPage + (j - 1)].logo" 
-            class="cataImage"
-            />
-            <p class="cataHeader">{{catalogue[(i - 1) * viewPerPage + (j - 1)].song}}</p>
-            <p>{{catalogue[(i - 1) * viewPerPage + (j - 1)].artist}}</p>
-            <p>{{catalogue[(i - 1) * viewPerPage + (j - 1)].album}}</p>
-          </div>
-        </div>
-       
-
-        <div id="carouselPagesButtonField">
-          <button 
-          class="carouselPageButton"
-          :class="{'carouselPageButton active' : i == currentPage}" 
-          @click="currentPage = i"
-          v-for="i in pageNum" :key="i">
-            {{i}}
-          </button>
-        </div>
-
+      <div id="carouselPagesButtonField">
+        <button 
+        class="carouselPageButton"
+        :class="{'carouselPageButton active' : i == currentPage}" 
+        @click="currentPage = i"
+        v-show="carouselView"
+        v-for="i in pageNum" :key="i">
+          {{i}}
+        </button>
       </div>
 
     </section>
@@ -138,6 +108,14 @@
       },
       pageNum () {
         return Math.ceil(this.catalogue.length / this.viewPerPage)
+      },
+      processedCatalogue () {
+        if (!this.carouselView) return this.catalogue
+        else {
+          return this.catalogue.slice(
+            (this.currentPage - 1) * this.viewPerPage, this.currentPage * this.viewPerPage
+          )
+        }
       }
     },
     methods: {
@@ -156,11 +134,6 @@
           this.songChange(this.catalogue.indexOf(song))
           this.playingToggle(true)
         }
-      },
-      itemsToProcess (page) {
-        if (page === this.pageNum && this.catalogue.length % this.viewPerPage !== 0) {
-          return this.catalogue.length % this.viewPerPage
-        } else return this.viewPerPage
       },
       searchBool (song) {
         return (
@@ -230,14 +203,6 @@
     font-style: italic;
   }
 
-  #normalMode {
-    margin-bottom: 100px;
-  }
-
-  #carouselMode {
-    margin-bottom: 100px;
-  }
-
   .cataParent {
     display: flex;
     flex-wrap: wrap;
@@ -302,6 +267,7 @@
   #carouselPagesButtonField {
     text-align: center;
     margin-top: 30px;
+    margin-bottom: 90px;
   }
 
   .carouselPageButton {
