@@ -31,42 +31,85 @@
           Click on a song to play, click on it again to pause or use the 
           bottom panel music player to interact with the playlist.
         </p>
+        <p>
+          View per page:
+          <button 
+          @click="carouselViewButton = true"
+          class="viewButton" 
+          :class="{'viewButton active' : carouselViewButton}">{{viewPerPage}}</button>
+          <button 
+          @click="carouselViewButton = false"
+          class="viewButton" 
+          :class="{'viewButton active' : !carouselViewButton}">All</button>
+        </p>
       </div>
-      <div class="cataParent">
-        <div 
-        class="cataChild" 
-        :class="{
-          cataChildHighlight : (
-              catalogue.indexOf(song) == currentSong || 
-              (mouseOver == true && song == currentSongHover)
-            )
-        }" 
-        v-for="(song, x) in catalogue" 
-        :key="x"
-        @click="
-          if (catalogue.indexOf(song) == currentSong && playing) {
-            playingToggle(false)
-          } else if (catalogue.indexOf(song) == currentSong && !playing) {
-            playingToggle(true)
-          } else {
-            songChange(catalogue.indexOf(song))
-            playingToggle(true)
-          } 
-        "
-        @mouseover="currentSongHover = song; mouseOver = true;" 
-        @mouseleave="currentSongHover = -1; mouseOver = false;"
-        v-show="song.song.toLowerCase().match(search.toLowerCase()) || 
-          song.album.toLowerCase().match(search.toLowerCase()) || 
-          song.artist.toLowerCase().match(search.toLowerCase())">
-          <img 
-          :src="pathToAudio + song.logo" 
-          class="cataImage"
-          />
-          <p class="cataHeader">{{song.song}}</p>
-          <p>{{song.artist}}</p>
-          <p>{{song.album}}</p>
+      
+      <div v-show="!carouselView" id="normalMode">
+        <div class="cataParent">
+          <div 
+          class="cataChild" 
+          :class="{
+            cataChildHighlight : (
+                catalogue.indexOf(song) == currentSong || 
+                (mouseOver == true && song == currentSongHover)
+              )
+          }" 
+          v-for="(song, x) in catalogue" 
+          :key="x"
+          @click="playSong(song)"
+          @mouseover="currentSongHover = song; mouseOver = true;" 
+          @mouseleave="currentSongHover = -1; mouseOver = false;"
+          v-show="searchBool(song)">
+            <img 
+            :src="pathToAudio + song.logo" 
+            class="cataImage"
+            />
+            <p class="cataHeader">{{song.song}}</p>
+            <p>{{song.artist}}</p>
+            <p>{{song.album}}</p>
+          </div>
         </div>
       </div>
+
+      <div v-show="carouselView" id="carouselMode">
+        
+        <div class="cataParent" v-show="i == currentPage" v-for="i in pageNum" :key="i">
+          <div 
+          class="cataChild" 
+          :class="{
+            cataChildHighlight : (
+                (i - 1) * viewPerPage + (j - 1) == currentSong || 
+                (mouseOver == true && currentSongHover == (i - 1) * viewPerPage + (j - 1))
+              )
+          }" 
+          v-for="j in itemsToProcess(i)" 
+          :key="j"
+          @click="playSong(catalogue[(i - 1) * viewPerPage + (j - 1)])"
+          @mouseover="currentSongHover = (i - 1) * viewPerPage + (j - 1); mouseOver = true" 
+          @mouseleave="currentSongHover = -1; mouseOver = false">
+            <img 
+            :src="pathToAudio + catalogue[(i - 1) * viewPerPage + (j - 1)].logo" 
+            class="cataImage"
+            />
+            <p class="cataHeader">{{catalogue[(i - 1) * viewPerPage + (j - 1)].song}}</p>
+            <p>{{catalogue[(i - 1) * viewPerPage + (j - 1)].artist}}</p>
+            <p>{{catalogue[(i - 1) * viewPerPage + (j - 1)].album}}</p>
+          </div>
+        </div>
+       
+
+        <div id="carouselPagesButtonField">
+          <button 
+          class="carouselPageButton"
+          :class="{'carouselPageButton active' : i == currentPage}" 
+          @click="currentPage = i"
+          v-for="i in pageNum" :key="i">
+            {{i}}
+          </button>
+        </div>
+
+      </div>
+
     </section>
   </div>
 </template>
@@ -82,20 +125,54 @@
         catalogue: musicBank,
         currentSongHover: -1,
         mouseOver: false,
-        search: ''
+        carouselViewButton: true,
+        viewPerPage: 18,
+        search: '',
+        currentPage: 1
       }
     },
-    computed: mapState(['currentSong', 'playing']),
+    computed: {
+      ...mapState(['currentSong', 'playing']),
+      carouselView () {
+        return this.search.length === 0 && this.carouselViewButton === true
+      },
+      pageNum () {
+        return Math.ceil(this.catalogue.length / this.viewPerPage)
+      }
+    },
     methods: {
       songChange (songIndex) {
         this.$store.commit('songChange', songIndex)
       },
       playingToggle (bool) {
         this.$store.commit('togglePlaying', bool)
+      },
+      playSong (song) {
+        if (this.catalogue.indexOf(song) === this.currentSong && this.playing) {
+          this.playingToggle(false)
+        } else if (this.catalogue.indexOf(song) === this.currentSong && !this.playing) {
+          this.playingToggle(true)
+        } else {
+          this.songChange(this.catalogue.indexOf(song))
+          this.playingToggle(true)
+        }
+      },
+      itemsToProcess (page) {
+        if (page === this.pageNum && this.catalogue.length % this.viewPerPage !== 0) {
+          return this.catalogue.length % this.viewPerPage
+        } else return this.viewPerPage
+      },
+      searchBool (song) {
+        return (
+          song.song.toLowerCase().match(this.search.toLowerCase()) ||
+          song.album.toLowerCase().match(this.search.toLowerCase()) ||
+          song.artist.toLowerCase().match(this.search.toLowerCase())
+        )
       }
     }
   }
 </script>
+
 
 <style scoped>
   #searchBar {
@@ -153,11 +230,18 @@
     font-style: italic;
   }
 
+  #normalMode {
+    margin-bottom: 100px;
+  }
+
+  #carouselMode {
+    margin-bottom: 100px;
+  }
+
   .cataParent {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 100px;
   }
 
   .cataChild {
@@ -195,7 +279,52 @@
     box-shadow: 2px 2px grey;
   }
 
-  @media (max-width: 600px) {
+  .viewButton {
+    background: grey;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: right;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+    margin: 5px 5px 10px 10px;
+  }
+
+  .viewButton.active {
+    background: rgb(114, 179, 184);
+  }
+
+  #carouselPagesButtonField {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .carouselPageButton {
+    background: grey;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: right;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+    margin: 5px 5px 10px 10px;
+  }
+
+  .carouselPageButton.active {
+    background: rgb(114, 179, 184);
+  }
+
+  @media (max-width: 450px) {
     #searchBar {
       width: 90%;
     }
@@ -238,7 +367,7 @@
     }
   }
 
-  @media (min-width: 600px) and (max-width: 1200px) {
+  @media (min-width: 450px) and (max-width: 1200px) {
 
     #nowPlaying {
       padding-top: 40px;

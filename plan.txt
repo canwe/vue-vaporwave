@@ -1,0 +1,17 @@
+LENGTH: 36
+
+VPP: 18
+
+PAGES: 2
+
+LENGTH: 37
+
+VPP: 18
+
+PAGES: 3
+
+LENGTH: 35
+
+VPP: 18
+
+PAGES: 2
