@@ -49,7 +49,8 @@
         class="cataChild" 
         :class="{
           cataChildHighlight : (
-              processedCatalogue.indexOf(song) == currentSong || 
+              (!carouselView && processedCatalogue.indexOf(song) === currentSong) || 
+              (carouselView && processedCatalogue.indexOf(song) === currentSong % viewPerPage) || 
               (mouseOver == true && song == currentSongHover)
             )
         }" 

@@ -6,13 +6,13 @@
         <router-link class="hidden-xs-only" to="/" tag="span" style="cursor: pointer">
         {{title}}
         </router-link>
-        <router-link class="hidden-md-and-up" to="/" tag="span" style="cursor: pointer">
+        <router-link class="hidden-sm-and-up" to="/" tag="span" style="cursor: pointer">
         Project Helios
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn class="hidden-xs-only" flat @click.native.stop="aboutDialog = true">
+        <v-btn class="hidden-sm-and-down" flat @click.native.stop="aboutDialog = true">
           About
         </v-btn>
         <v-btn class="hidden-xs-only" flat router to="/catalogue">
@@ -29,7 +29,7 @@
             </v-card-text>
           </v-card>
         </v-menu>
-        <v-btn class="hidden-xs-only" flat @click.stop="togglePlayer">
+        <v-btn class="hidden-sm-and-down" flat @click.stop="togglePlayer">
           {{showHide}}
         </v-btn>
         <v-btn class="hidden-md-and-up" flat @click.stop="togglePlayer">

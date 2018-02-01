@@ -286,6 +286,14 @@ let musicians = [
     logo: 'bae.jpg',
     album: 'Bae',
     url: 'https://yungbaebae.bandcamp.com/album/bae'
+  },
+  {
+    artist: 'Nouveau Life',
+    path: 'start.mp3',
+    song: 'Start Life',
+    logo: 'newworld.jpg',
+    album: 'New World',
+    url: 'https://dreamcatalogue.bandcamp.com/album/new-world'
   }
 ]
 
