@@ -9,7 +9,10 @@ import App from './App'
 import router from './router'
 import store from './store'
 
+import YoutubeIframe from 'youtube-iframe'
+
 Vue.use(Vuetify)
+Vue.use(YoutubeIframe)
 
 Vue.config.productionTip = false
 

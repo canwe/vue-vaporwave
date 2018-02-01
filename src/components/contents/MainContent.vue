@@ -1,5 +1,5 @@
 <template>
-  <main style="padding: 50px">
+  <main style="padding: 50px;">
       
       <section id="paragraph">
 
@@ -12,52 +12,88 @@
         </p>
 
         <p>
-          Vaporwave is a microgenre of electronic music and an Internet meme 
-          that emerged in the early 2010s. The music typically features a fascination 
-          with 1980s and 1990s styles of mood music such as smooth jazz, elevator music, 
-          R&B, and lounge music, often sampling or manipulating tracks via chopped 
-          and screwed techniques and other effects. The subculture surrounding 
-          vaporwave is often associated with an ambiguous or satirical take on consumer 
-          capitalism and popular culture, and tends to be characterized by a nostalgic 
-          or surrealist engagement with the popular entertainment, technology and 
-          advertising of previous decades. It also incorporates early Internet imagery, 
-          late 1990s web design, glitch art, and cyberpunk tropes in its cover artwork 
-          and music videos.
+          Vaporwave is a genre of music that began to explode around the start 
+          of 2010s. The signature sound of vaporwave was made by taking sections of 
+          80's music, slowing them down, then (most of the time) add a lot of effects like  
+          delay or reverb, and sometimes chop the song up into little pieces and then mix 
+          them up together like shuffling a deck of card.
         </p>
+
+        <div id="videoShowcase">
+          <p @click="pauseSong">
+            <iframe
+            src="https://www.youtube.com/embed/PdpP0mXOlWM" 
+            frameborder="0" allow="encrypted-media" allowfullscreen />
+
+            <iframe
+            src="https://www.youtube.com/embed/wyt_87yCyNw" 
+            frameborder="0" allow="encrypted-media" allowfullscreen />
+          </p>
+        </div>
 
         <p>
-          <img src="/static/helios.gif" style="display: block; margin: auto" />
+          The catch of Vaporwave comes in two parts, the "a e s t h e t i c" and the music 
+          itself, which are two sides of somewhat the same coin. Both of these components 
+          relies on a very simple strategy: to invoke nostalgia upon the listener. Many people 
+          find Vaporwave the odd child of music: unoriginal, cringeworthy and apparently just 
+          bits and pieces of stolen music being put together, but for some reason are oddly 
+          attracted to it. The magic of Vaporwave is that it takes the listeners back to an era 
+          where they could relive part of their long lost memory. Nostalgia is not what they 
+          were looking for - Vaporwave forces it on them whether they like it or not.
         </p>
+        
+        <img class="bigImg" src="/static/gifs/room.gif">
 
-        <p style="text-align: center; font-style:italic;">
-          (A distorted Bust of Helios, the mascot of Vaporwave)
-        </p>
-
-        <p>
-          Originating as an ironic variant of chillwave, vaporwave was loosely derived 
-          from the experimental tendencies of the mid-2000s hypnagogic pop scene and 
-          pioneered by producers such as James Ferraro, Daniel Lopatin and Vektroid 
-          (Ramona Xavier). Following the blueprint established by Vektroid's Floral Shoppe 
-          (December 2011), a circle of online producers were inspired to make music in the 
-          style. The movement built an audience on sites Last.fm, Reddit, and 4chan, with a 
-          flood of new acts, many operating under online pseudonyms, turning to Bandcamp for 
-          distribution. The wider exposure of vaporwave in 2012 led to a wealth of 
-          subgenres and offshoots such as future funk, mallsoft, and hardvapour.
-        </p>
-
-        <p>
-          <code>Source: Wikipedia</code>
-        </p>
       </section>
 
     </main>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
-    data () {
-      return {
+    computed: mapState(['playing']),
+    methods: {
+      pauseSong () {
+        if (this.playing) this.$store.commit('togglePlaying', false)
       }
     }
   }
 </script>
+
+<style>
+  #videoShowcase {
+    text-align: center;
+  }
+
+  iframe {
+    width: 400px;
+    height: 300px;
+  }
+
+  .bigImg {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 500px;
+  }
+
+  @media (max-width: 600px) {
+    
+    .bigImg {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    iframe {
+      width: 100%;
+      height: 50%;
+    }
+  }
+</style>
+
+
+

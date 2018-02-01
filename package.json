@@ -21,7 +21,9 @@
     "vue-router": "^3.0.1",
     "vuetify": "^0.17.3",
     "vuetify-audio": "0.0.8",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "youtube-api": "^2.0.9",
+    "youtube-iframe": "^1.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
