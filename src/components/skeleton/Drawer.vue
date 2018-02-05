@@ -1,28 +1,25 @@
 <template>
-  <div>
-    <v-navigation-drawer 
-    temporary v-model="drawer" 
-    class="blue lighten-3"
-    overflow absolute>
-      <v-list>
+  <v-navigation-drawer 
+  temporary v-model="drawer" 
+  class="blue lighten-3"
+  overflow absolute fixed>
+    <v-list>
 
-        <v-list-tile 
-        v-for="(tile, x) in tilesList" 
-        v-bind:key="x"
-        router :to="tile.link">
-          
-            <v-list-tile-action>
-              <v-icon>{{tile.icon}}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{tile.title}}</v-list-tile-title>
-            </v-list-tile-content>
-          
-        </v-list-tile>
-
-      </v-list>
-    </v-navigation-drawer>
-  </div>
+      <v-list-tile 
+      v-for="(tile, x) in tilesList" 
+      v-bind:key="x"
+      router :to="tile.link">
+        
+          <v-list-tile-action>
+            <v-icon>{{tile.icon}}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>{{tile.title}}</v-list-tile-title>
+          </v-list-tile-content>
+        
+      </v-list-tile>
+    </v-list>
+  </v-navigation-drawer>
 </template>
 
 <script>
