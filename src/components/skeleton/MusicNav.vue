@@ -69,14 +69,10 @@
 
 <script>
   import musicBank from '../../../static/js/musicBank'
-  import { bus } from '../../main'
   import { mapState } from 'vuex'
 
   export default {
     created () {
-      bus.$emit('toggledPlayer', (data) => {
-        this.player = data
-      })
       this.audio.volume = this.$store.state.volume
       this.audio = new Audio(this.pathToAudio + this.catalogue[this.currentSong].path)
       this.init()
@@ -135,6 +131,7 @@
           if (this.audio.currentTime > 2) this.audio.currentTime = 0
           else this.$store.commit('songIncr', { increment: false, threshold: this.catalogue.length })
         } else this.$store.commit('songIncr', { increment: true, threshold: this.catalogue.length })
+        if (!this.audio.playing) this.audio.play()
       },
       skipInterval (direction) {
         direction === 0 ? this.audio.currentTime -= 10 : this.audio.currentTime += 10
@@ -148,6 +145,7 @@
           return Math.floor(Math.random() * (max - min)) + min
         }
         this.$store.commit('songChange', randRange(0, this.catalogue.length))
+        if (!this.audio.playing) this.audio.play()
       }
     }
   }
