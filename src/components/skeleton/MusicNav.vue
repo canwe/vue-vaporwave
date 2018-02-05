@@ -77,6 +77,9 @@
       bus.$emit('toggledPlayer', (data) => {
         this.player = data
       })
+      bus.$on('mobileToggle', (data) => {
+        this.forceMobileToggle(data)
+      })
       this.audio.volume = this.$store.state.volume
       this.audio = new Audio(this.pathToAudio + this.catalogue[this.currentSong].path)
       this.init()
@@ -117,8 +120,15 @@
     methods: {
       playPause () {
         this.$store.commit('togglePlaying', !this.playing)
-        if (this.playing && !this.audio.playing) this.audio.play()
-        else if (!this.playing && this.audio.playing) this.audio.pause()
+        this.forceMobileToggle('Toggle')
+      },
+      forceMobileToggle (mode) {
+        if (mode === 'Change Song') {
+          if (this.playing && !this.audio.playing) this.audio.play()
+        } else if (mode === 'Toggle') {
+          if (this.playing && !this.audio.playing) this.audio.play()
+          else if (!this.playing && this.audio.playing) this.audio.pause()
+        }
       },
       init () {
         this.audio.addEventListener('timeupdate', this.handleProgressBar)
@@ -134,6 +144,7 @@
           if (this.audio.currentTime > 2) this.audio.currentTime = 0
           else this.$store.commit('songIncr', { increment: false, threshold: this.catalogue.length })
         } else this.$store.commit('songIncr', { increment: true, threshold: this.catalogue.length })
+        this.forceMobileToggle('Change Song')
       },
       skipInterval (direction) {
         direction === 0 ? this.audio.currentTime -= 10 : this.audio.currentTime += 10
@@ -147,6 +158,7 @@
           return Math.floor(Math.random() * (max - min)) + min
         }
         this.$store.commit('songChange', randRange(0, this.catalogue.length))
+        this.forceMobileToggle('Change Song')
       }
     }
   }

@@ -88,6 +88,7 @@
 <script>
   import musicBank from '../../../static/js/musicBank'
   import { mapState } from 'vuex'
+  import { bus } from '../../main'
 
   export default {
     data () {
@@ -126,11 +127,14 @@
       playSong (song) {
         if (this.catalogue.indexOf(song) === this.currentSong && this.playing) {
           this.playingToggle(false)
+          bus.$emit('mobileToggle', 'Toggle')
         } else if (this.catalogue.indexOf(song) === this.currentSong && !this.playing) {
           this.playingToggle(true)
+          bus.$emit('mobileToggle', 'Toggle')
         } else {
           this.songChange(this.catalogue.indexOf(song))
           this.playingToggle(true)
+          bus.$emit('mobileToggle', 'Change Song')
         }
       },
       searchBool (song) {
