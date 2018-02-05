@@ -9,7 +9,7 @@
     <app-drawer></app-drawer>
     
     <!-- Main content | Dynamic Router -->
-    <router-view></router-view>
+    <router-view style="margin-top: 50px;"></router-view>
     
     <!-- Footer | Static -->
     <app-footer></app-footer>
@@ -30,12 +30,6 @@
       'app-drawer': Drawer,
       'app-footer': Footer,
       'music-nav': MusicNav
-    },
-    data () {
-      return {
-        e3: 1,
-        e31: true
-      }
     }
   }
 </script>

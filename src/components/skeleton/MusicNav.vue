@@ -80,7 +80,6 @@
       this.audio.volume = this.$store.state.volume
       this.audio = new Audio(this.pathToAudio + this.catalogue[this.currentSong].path)
       this.init()
-      this.$store.commit('togglePlaying', true)
     },
     beforeDestroy () {
       this.$store.commit('togglePlaying', false)
@@ -88,17 +87,16 @@
     },
     data () {
       return {
-        pathToAudio: 'static/catalog/',
-        progress: 0,
-        catalogue: musicBank,
-        audio: new Audio()
+        pathToAudio:    'static/catalog/',
+        progress:       0,
+        catalogue:      musicBank,
+        audio:          new Audio()
       }
     },
     computed: mapState(['currentSong', 'playing', 'volume', 'player']),
     watch: {
       playing: function (newVal, oldVal) {
-        if (newVal) this.audio.play()
-        else this.audio.pause()
+        newVal ? this.audio.play() : this.audio.pause()
       },
       volume: function (newVal, oldVal) {
         this.audio.volume = newVal
@@ -118,8 +116,7 @@
     },
     methods: {
       playPause () {
-        if (!this.playing) this.$store.commit('togglePlaying', true)
-        else this.$store.commit('togglePlaying', false)
+        this.$store.commit('togglePlaying', !this.playing)
       },
       init () {
         this.audio.addEventListener('timeupdate', this.handleProgressBar)

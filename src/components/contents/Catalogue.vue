@@ -92,14 +92,14 @@
   export default {
     data () {
       return {
-        pathToAudio: 'static/catalog/',
-        catalogue: musicBank,
-        currentSongHover: -1,
-        mouseOver: false,
-        carouselViewButton: true,
-        viewPerPage: 18,
-        search: '',
-        currentPage: 1
+        pathToAudio:          'static/catalog/',
+        catalogue:            musicBank,
+        currentSongHover:     -1,
+        mouseOver:            false,
+        carouselViewButton:   true,
+        viewPerPage:          18,
+        search:               '',
+        currentPage:          1
       }
     },
     computed: {
@@ -111,12 +111,9 @@
         return Math.ceil(this.catalogue.length / this.viewPerPage)
       },
       processedCatalogue () {
-        if (!this.carouselView) return this.catalogue
-        else {
-          return this.catalogue.slice(
-            (this.currentPage - 1) * this.viewPerPage, this.currentPage * this.viewPerPage
-          )
-        }
+        return this.carouselView ? this.catalogue.slice(
+          (this.currentPage - 1) * this.viewPerPage, this.currentPage * this.viewPerPage
+        ) : this.catalogue
       }
     },
     methods: {
@@ -138,8 +135,10 @@
       },
       searchBool (song) {
         return (
-          song.song.toLowerCase().match(this.search.toLowerCase()) ||
-          song.album.toLowerCase().match(this.search.toLowerCase()) ||
+          song.song.toLowerCase().match(this.search.toLowerCase()) 
+          ||
+          song.album.toLowerCase().match(this.search.toLowerCase()) 
+          ||
           song.artist.toLowerCase().match(this.search.toLowerCase())
         )
       }

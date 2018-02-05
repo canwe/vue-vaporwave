@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar class="pink accent-1">
+    <v-toolbar fixed dense class="pink accent-1">
       <v-toolbar-side-icon @click.stop="toggleDrawer" flat></v-toolbar-side-icon>
       <v-toolbar-title>
         <router-link class="hidden-xs-only" to="/" tag="span" style="cursor: pointer">
@@ -66,16 +66,15 @@
     },
     data () {
       return {
-        volumeBar: this.$store.state.volume * 100,
-        aboutDialog: false,
-        drawer: false,
-        titleCounter: 0
+        volumeBar:      this.$store.state.volume * 100,
+        aboutDialog:    false,
+        drawer:         false,
+        titleCounter:   0
       }
     },
     computed: {
       showHide () {
-        if (this.player) return 'Hide Player'
-        else return 'Show Player'
+        return this.player ? 'Hide Player' : 'Show Player'
       },
       title () {
         if (this.titleCounter % 5 === 0) return 'v a p o r w a v e エステティック'

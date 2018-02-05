@@ -127,9 +127,9 @@
   export default {
     data () {
       return {
-        artists: artistBank,
-        artistViewing: false,
-        currentArtist: 0
+        artists:            artistBank,
+        artistViewing:      false,
+        currentArtist:      0
       }
     }
   }
