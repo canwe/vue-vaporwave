@@ -117,6 +117,8 @@
     methods: {
       playPause () {
         this.$store.commit('togglePlaying', !this.playing)
+        if (this.playing && !this.audio.playing) this.audio.play()
+        else if (!this.playing && this.audio.playing) this.audio.pause()
       },
       init () {
         this.audio.addEventListener('timeupdate', this.handleProgressBar)
