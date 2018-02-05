@@ -93,15 +93,10 @@
         audio:          new Audio()
       }
     },
-    computed:{
-      ...mapState(['currentSong', 'playing', 'volume', 'player']),
-      thisPlay () {
-        return this.audio.playing
-      }
-    },
+    computed: mapState(['currentSong', 'playing', 'volume', 'player']),
     watch: {
       playing: function (newVal, oldVal) {
-        this.$store.commit('togglePlaying', newVal)
+        newVal ? this.audio.play() : this.audio.pause()
       },
       volume: function (newVal, oldVal) {
         this.audio.volume = newVal
