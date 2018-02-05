@@ -80,6 +80,7 @@
       this.audio.volume = this.$store.state.volume
       this.audio = new Audio(this.pathToAudio + this.catalogue[this.currentSong].path)
       this.init()
+      if (window.innerWidth > 800) this.playPause()
     },
     beforeDestroy () {
       this.$store.commit('togglePlaying', false)
