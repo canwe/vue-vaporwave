@@ -93,10 +93,15 @@
         audio:          new Audio()
       }
     },
-    computed: mapState(['currentSong', 'playing', 'volume', 'player']),
+    computed:{
+      ...mapState(['currentSong', 'playing', 'volume', 'player']),
+      thisPlay () {
+        return this.audio.playing
+      }
+    },
     watch: {
       playing: function (newVal, oldVal) {
-        newVal ? this.audio.play() : this.audio.pause()
+        this.$store.commit('togglePlaying', newVal)
       },
       volume: function (newVal, oldVal) {
         this.audio.volume = newVal
@@ -116,7 +121,7 @@
     },
     methods: {
       playPause () {
-        this.$store.commit('togglePlaying', !this.playing)
+        this.audio.play()
       },
       init () {
         this.audio.addEventListener('timeupdate', this.handleProgressBar)
