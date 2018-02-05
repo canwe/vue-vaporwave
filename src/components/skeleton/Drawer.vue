@@ -40,8 +40,7 @@
           {icon: 'translate', title: 'Vaporize Your Text', link: '/textgen'},
           {icon: 'info_outline', title: 'About Vaporwave', link: '/about'},
           {icon: 'contacts', title: 'Register', link: '/register'},
-          {icon: 'account_circle', title: 'Sign In', link: '/signin'},
-          {icon: 'account_circle', title: 'Test', link: '/test'}
+          {icon: 'account_circle', title: 'Sign In', link: '/signin'}
         ]
       }
     }

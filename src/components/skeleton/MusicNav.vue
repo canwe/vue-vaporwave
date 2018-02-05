@@ -131,7 +131,6 @@
           if (this.audio.currentTime > 2) this.audio.currentTime = 0
           else this.$store.commit('songIncr', { increment: false, threshold: this.catalogue.length })
         } else this.$store.commit('songIncr', { increment: true, threshold: this.catalogue.length })
-        if (!this.audio.playing) this.audio.play()
       },
       skipInterval (direction) {
         direction === 0 ? this.audio.currentTime -= 10 : this.audio.currentTime += 10
@@ -145,7 +144,6 @@
           return Math.floor(Math.random() * (max - min)) + min
         }
         this.$store.commit('songChange', randRange(0, this.catalogue.length))
-        if (!this.audio.playing) this.audio.play()
       }
     }
   }
