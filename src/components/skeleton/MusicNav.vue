@@ -124,7 +124,7 @@
       },
       forceMobileToggle (mode) {
         if (mode === 'Change Song') {
-          if (this.playing && !this.audio.playing) this.audio.play()
+          if (!this.audio.playing) this.audio.play()
         } else if (mode === 'Toggle') {
           if (this.playing && !this.audio.playing) this.audio.play()
           else if (!this.playing && this.audio.playing) this.audio.pause()

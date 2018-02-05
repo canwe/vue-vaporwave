@@ -127,14 +127,14 @@
       playSong (song) {
         if (this.catalogue.indexOf(song) === this.currentSong && this.playing) {
           this.playingToggle(false)
-          bus.$emit('mobileToggle', 'Toggle')
+          bus.$emit('mobileToggle', (data) => 'Toggle')
         } else if (this.catalogue.indexOf(song) === this.currentSong && !this.playing) {
           this.playingToggle(true)
-          bus.$emit('mobileToggle', 'Toggle')
+          bus.$emit('mobileToggle', (data) => 'Toggle')
         } else {
           this.songChange(this.catalogue.indexOf(song))
           this.playingToggle(true)
-          bus.$emit('mobileToggle', 'Change Song')
+          bus.$emit('mobileToggle', (data) => 'Change Song')
         }
       },
       searchBool (song) {
