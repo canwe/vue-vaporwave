@@ -24,7 +24,7 @@
             <iframe
             src="https://www.youtube.com/embed/PdpP0mXOlWM" 
             frameborder="0" allow="encrypted-media" allowfullscreen />
-
+            
             <iframe
             src="https://www.youtube.com/embed/wyt_87yCyNw" 
             frameborder="0" allow="encrypted-media" allowfullscreen />
@@ -43,6 +43,10 @@
         </p>
         
         <img class="bigImg" src="/static/gifs/room.gif">
+
+        <p>
+          
+        </p>
 
       </section>
 

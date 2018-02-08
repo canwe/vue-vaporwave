@@ -103,7 +103,6 @@
     
     <div v-show="!artistViewing" id="artistShowcase">
       <div 
-      
       class="showcaseItems" 
       v-for="(artist, x) in artists" 
       :key="x"

@@ -96,6 +96,14 @@ let musicians = [
     url: 'https://beerontherug.bandcamp.com/album/-'
   },
   {
+    artist: 't e l e p a t h テレパシー能力者',
+    path: 'newday.mp3',
+    song: '新しい日',
+    logo: 'ghost.jpg',
+    album: '未来へ',
+    url: 'https://telepathtelepath.bandcamp.com/album/--5'
+  },
+  {
     artist: 'New Dreams Ltd.',
     path: 'fatal.mp3',
     song: 'Fatal',
@@ -144,6 +152,14 @@ let musicians = [
     url: 'https://beerontherug.bandcamp.com/album/floral-shoppe'
   },
   {
+    artist: 'Nouveau Life',
+    path: 'start.mp3',
+    song: 'Start Life',
+    logo: 'newworld.jpg',
+    album: 'New World',
+    url: 'https://dreamcatalogue.bandcamp.com/album/new-world'
+  },
+  {
     artist: 'Eyeliner',
     path: 'devotion.mp3',
     song: 'Devotion',
@@ -182,6 +198,14 @@ let musicians = [
     logo: 'eyeliner.jpg',
     album: 'High Fashion Mood Music',
     url: 'https://disasteradio.bandcamp.com/album/high-fashion-mood-music'
+  },
+  {
+    artist: 't e l e p a t h テレパシー能力者',
+    path: 'flamingo.mp3',
+    song: 'フラミンゴマイアミ',
+    logo: 'ghost.jpg',
+    album: '未来へ',
+    url: 'https://telepathtelepath.bandcamp.com/album/--5'
   },
   {
     artist: '情報デスクVIRTUAL',
@@ -240,6 +264,14 @@ let musicians = [
     url: 'https://vaportapesinc.bandcamp.com/album/eccojams-vol-1'
   },
   {
+    artist: 't e l e p a t h テレパシー能力者',
+    path: 'applebee.mp3',
+    song: 'あなたの愛',
+    logo: 'ghost.jpg',
+    album: '未来へ',
+    url: 'https://telepathtelepath.bandcamp.com/album/--5'
+  },
+  {
     artist: 'Midnight Television',
     path: 'blind.mp3',
     song: 'Blind Dates',
@@ -272,14 +304,6 @@ let musicians = [
     url: 'https://internetclub.bandcamp.com/album/redefining-the-workplace'
   },
   {
-    artist: 't e l e p a t h テレパシー能力者',
-    path: 'newday.mp3',
-    song: '新しい日',
-    logo: 'ghost.jpg',
-    album: '未来へ',
-    url: 'https://telepathtelepath.bandcamp.com/album/--5'
-  },
-  {
     artist: 'YUNG BAE',
     path: 'yebisu.mp3',
     song: 'YEBISU',
@@ -288,9 +312,17 @@ let musicians = [
     url: 'https://yungbaebae.bandcamp.com/album/bae'
   },
   {
+    artist: 't e l e p a t h テレパシー能力者',
+    path: 'onlyyou.mp3',
+    song: 'あなただけ',
+    logo: 'ghost.jpg',
+    album: '未来へ',
+    url: 'https://telepathtelepath.bandcamp.com/album/--5'
+  },
+  {
     artist: 'Nouveau Life',
-    path: 'start.mp3',
-    song: 'Start Life',
+    path: 'feeling.mp3',
+    song: 'A New Feeling',
     logo: 'newworld.jpg',
     album: 'New World',
     url: 'https://dreamcatalogue.bandcamp.com/album/new-world'

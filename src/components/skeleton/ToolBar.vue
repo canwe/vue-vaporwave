@@ -77,11 +77,13 @@
         return this.player ? 'Hide Player' : 'Show Player'
       },
       title () {
-        if (this.titleCounter % 5 === 0) return 'v a p o r w a v e エステティック'
-        else if (this.titleCounter % 5 === 1) return 'Project Helios'
-        else if (this.titleCounter % 5 === 2) return 'IT\'S ALL IN YOUR HEAD ( ͡° ͜ʖ ( ͡° ͜ʖ ( ͡° ͜ʖ ( ͡° ͜ʖ ͡°) ͜ʖ ͡°)ʖ ͡°)ʖ ͡°)'
-        else if (this.titleCounter % 5 === 3) return '☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐'
-        else return '~~ａｅｓｔｈｅｔｉｃ ｄｒｅａｍ~~'
+        switch (this.titleCounter % 5) {
+          case 0: return 'v a p o r w a v e エステティック'
+          case 1: return 'Project Helios'
+          case 2: return 'IT\'S ALL IN YOUR HEAD ( ͡° ͜ʖ ( ͡° ͜ʖ ( ͡° ͜ʖ ( ͡° ͜ʖ ͡°) ͜ʖ ͡°)ʖ ͡°)ʖ ͡°)'
+          case 3: return '☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐☐'
+          default: return '~~ａｅｓｔｈｅｔｉｃ ｄｒｅａｍ~~'
+        }
       },
       player () {
         return this.$store.state.player
