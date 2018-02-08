@@ -17,8 +17,8 @@ export default new Vuex.Store({
     },
     songIncr (state, { increment, threshold }) {
       let mod = (n, m) => ((n % m) + m) % m
-      if (increment) state.currentSong = mod(state.currentSong + 1, threshold - 1)
-      else state.currentSong = mod(state.currentSong - 1, threshold - 1)
+      if (increment) state.currentSong = mod(state.currentSong + 1, threshold)
+      else state.currentSong = mod(state.currentSong - 1, threshold)
     },
     togglePlaying (state, bool) {
       if (bool) state.playing = bool

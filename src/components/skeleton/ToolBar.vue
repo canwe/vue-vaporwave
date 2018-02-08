@@ -76,6 +76,11 @@
       showHide () {
         return this.player ? 'Hide Player' : 'Show Player'
       },
+     /* This gives the main title a cool rotating animation.
+      * Take a look at the setInterval method on the mounted hook. In every 3 seconds,
+      * the titleCounter variable will increment. This title computed property will watch
+      * over titleCounter and changes itself based on what the counter is.
+      */
       title () {
         switch (this.titleCounter % 5) {
           case 0: return 'v a p o r w a v e エステティック'
@@ -90,6 +95,8 @@
       }
     },
     methods: {
+      /* Toggle the drawer boolean, which is in another component (Drawer.vue) through
+      a global event bus */
       toggleDrawer: function () {
         this.drawer = true
         bus.$emit('toggledDrawer', this.drawer)

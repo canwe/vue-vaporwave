@@ -76,6 +76,7 @@
       this.audio.volume = this.$store.state.volume
       this.audio = new Audio(this.pathToAudio + this.catalogue[this.currentSong].path)
       this.init()
+      // Auto play only on PC viewport due to several Vuex bugs on mobile browsers
       if (window.innerWidth > 800) this.playPause()
     },
     beforeDestroy () {
@@ -90,7 +91,24 @@
         audio:          new Audio()
       }
     },
+   /* For folks who are unfamiliar with Vuex, the mapState method takes designated
+    * states from the global store.js file and map them to local computed properties
+    * of the same name.
+    * For example:
+    *   computed: mapstate(['foo'])
+    * Would be the same as:
+    *   computed: {
+    *     foo () {
+    *       return this.$state.store.foo
+    *     }
+    *   }
+    * So just throw in 10 more states and you'll get how useful mapState is.
+    */
     computed: mapState(['currentSong', 'playing', 'volume', 'player']),
+   /* Since Vue's computed properties can't interact directly with the DOM elements 
+    * (in which the Javascript Audio() is a part of), I have to use watchers instead
+    * to observe changes in these elements.
+    */
     watch: {
       playing: function (newVal, oldVal) {
         newVal ? this.audio.play() : this.audio.pause()
@@ -117,6 +135,11 @@
         if (this.playing && !this.audio.playing) this.audio.play()
         else if (!this.playing && this.audio.playing) this.audio.pause()
       },
+     /* Add a listener to the audio object on every frame where its playing time is 
+      * updated. This will then make changes to the this.progress while the value of
+      * this.progress will be watched by the progress bar on the music player, thus
+      * gives the song a progressing animation.
+      */
       init () {
         this.audio.addEventListener('timeupdate', this.handleProgressBar)
       },

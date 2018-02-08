@@ -18,11 +18,13 @@
             <p><strong>{{catalogue[currentSong].song}}</strong></p>
             <p><strong>Artist:</strong> {{catalogue[currentSong].artist}}</p>
             <p><strong>Album:</strong> {{catalogue[currentSong].album}}</p>
-            <div id="linkButton"><a
-            :href="catalogue[currentSong].url" 
-            target="_blank">
-              >>> Visit {{catalogue[currentSong].artist}} on Bandcamp
-            </a></div> 
+            <div id="linkButton">
+              <a
+              :href="catalogue[currentSong].url" 
+              target="_blank">
+                >>> Visit {{catalogue[currentSong].artist}} on Bandcamp
+              </a>
+            </div> 
           </div>
         </div>
       </div>
@@ -68,11 +70,11 @@
 
       <div id="carouselPagesButtonField">
         <button 
+        v-for="i in pageNum" :key="i"
         class="carouselPageButton"
-        :class="{'carouselPageButton active' : i == currentPage}" 
+        :class="{'carouselPageButton active' : i === currentPage}" 
         @click="currentPage = i"
-        v-show="carouselView"
-        v-for="i in pageNum" :key="i">
+        v-show="carouselView">
           {{i}}
         </button>
       </div>
@@ -93,6 +95,13 @@
         currentSongHover:     -1,
         mouseOver:            false,
         carouselViewButton:   true,
+       /* If you want to change the number of songs viewed per page, simply change the
+        * viewPerPage variable. Everything else in the component are programmed to change
+        * along with it.
+        * For example, if you want to display less songs per page on a mobile viewport,
+        * simply do: if (window.innerWidth < 600) { this.viewPerPage = 10 } on a created()
+        * lifecycle hook.
+        */
         viewPerPage:          18,
         search:               '',
         currentPage:          1
@@ -106,6 +115,13 @@
       pageNum () {
         return Math.ceil(this.catalogue.length / this.viewPerPage)
       },
+     /* Returns the displaying array depends on what the current display mode is.
+      * If not in carousel mode (display all songs in one page), this computed property
+      * simply returns the full catalogue array.
+      * If in carousel mode (divide songs into chunks of 18 per page) it will then return
+      * a sliced array that only contains songs from the current page, thus dynamically
+      * display both viewing mode in just one neat v-for loop.
+      */
       processedCatalogue () {
         return this.carouselView ? this.catalogue.slice(
           (this.currentPage - 1) * this.viewPerPage, this.currentPage * this.viewPerPage
@@ -119,6 +135,13 @@
       playingToggle (bool) {
         this.$store.commit('togglePlaying', bool)
       },
+     /* Event handler for a click event on a song block.
+      * If a song is clicked when it's not played, the music player will jump into
+      * that song.
+      * Else, if a song is playing and then get clicked, it will toggle the global playing
+      * state to a temporary pause.
+      * Parameter: song object instance from the v-for loop
+      */
       playSong (song) {
         if (this.catalogue.indexOf(song) === this.currentSong && this.playing) {
           this.playingToggle(false)
@@ -129,6 +152,9 @@
           this.playingToggle(true)
         }
       },
+     /* Straightforward search boolean for the search bar.
+      * Parameter: song object instance from the v-for loop
+      */
       searchBool (song) {
         return (
           song.song.toLowerCase().match(this.search.toLowerCase()) 
@@ -138,6 +164,15 @@
           song.artist.toLowerCase().match(this.search.toLowerCase())
         )
       },
+     /* Returns a boolean on whether a block should be highlighted or not
+      * Three cases can happen:
+      * - The first two boolean sets implements that either when carousel view is off 
+      * or on, the current playing song will highlight if its position matches the 
+      * global current song from the state.
+      * - The third boolean set returns true when any block of song is hovered on
+      * but only the song that matches the position of the cursor will highlight.
+      * Parameter: song object instance from the v-for loop
+      */
       highlightBool (song) {
         return (
           (!this.carouselView && this.processedCatalogue.indexOf(song) === this.currentSong)
@@ -148,7 +183,7 @@
           &&
           this.catalogue[this.currentSong].song === song.song) 
           || 
-          (this.mouseOver === true && song === this.currentSongHover)
+          (this.mouseOver && song === this.currentSongHover)
         )
       }
     }
