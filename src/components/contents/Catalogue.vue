@@ -48,11 +48,7 @@
         <div 
         class="cataChild" 
         :class="{
-          cataChildHighlight : (
-              (!carouselView && processedCatalogue.indexOf(song) === currentSong) || 
-              (carouselView && processedCatalogue.indexOf(song) === currentSong % viewPerPage) || 
-              (mouseOver == true && song == currentSongHover)
-            )
+          cataChildHighlight : highlightBool(song)
         }" 
         v-for="(song, x) in processedCatalogue" 
         :key="x"
@@ -140,6 +136,19 @@
           song.album.toLowerCase().match(this.search.toLowerCase()) 
           ||
           song.artist.toLowerCase().match(this.search.toLowerCase())
+        )
+      },
+      highlightBool (song) {
+        return (
+          (!this.carouselView && this.processedCatalogue.indexOf(song) === this.currentSong)
+          || 
+          (this.carouselView 
+          && 
+          this.processedCatalogue.indexOf(song) === this.currentSong % this.viewPerPage
+          &&
+          this.catalogue[this.currentSong].song === song.song) 
+          || 
+          (this.mouseOver === true && song === this.currentSongHover)
         )
       }
     }
