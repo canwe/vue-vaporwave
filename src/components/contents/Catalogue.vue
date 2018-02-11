@@ -139,7 +139,7 @@
       * If a song is clicked when it's not played, the music player will jump into
       * that song.
       * Else, if a song is playing and then get clicked, it will toggle the global playing
-      * state to a temporary pause.
+      * state to a temporary pause, and then can be pressed again to toggle into playing.
       * Parameter: song object instance from the v-for loop
       */
       playSong (song) {
@@ -169,8 +169,8 @@
       * - The first two boolean sets implements that either when carousel view is off 
       * or on, the current playing song will highlight if its position matches the 
       * global current song from the state.
-      * - The third boolean set returns true when any block of song is hovered on
-      * but only the song that matches the position of the cursor will highlight.
+      * - In the third boolean set, mouseover returns true when any block of song is hovered 
+      * on but only the song that matches the position of the cursor will highlight.
       * Parameter: song object instance from the v-for loop
       */
       highlightBool (song) {

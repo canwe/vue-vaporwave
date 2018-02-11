@@ -146,7 +146,7 @@
       handleProgressBar () {
         let current = this.audio.currentTime
         let total = this.audio.duration
-        this.progress = parseInt(current / total * 100)
+        this.progress = parseFloat(current / total * 100)
         if (this.progress === 100) this.skipSong(1)
       },
       skipSong (direction) {

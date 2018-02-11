@@ -1,12 +1,13 @@
 import Vue from 'vue'
 
 import Vuex from 'vuex'
+import MusicBank from '../static/js/musicBank'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    currentSong: [0, 1, 4, 10, 13, 27, 28][Math.floor(Math.random() * 7)],
+    currentSong: Math.floor(Math.random() * MusicBank.length),
     playing: false,
     volume: 0.5,
     player: true
