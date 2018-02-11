@@ -1,34 +1,26 @@
-# ATTENTION: The project will not work if downloaded due to several dependency issues. Please visit [this site](https://project-helios.herokuapp.com/) for the actual working app. However, feel free to explore my code in the repository.
+# ATTENTION: Please visit this [demo](https://project-helios-95771.firebaseapp.com/) for the working app.
 
 # vue-vaporwave
 
-> A Vue-powered Bandcamp-like website for music playing and information related to Vaporwave
+> A Vue-powered Bandcamp-like website for music and information related to the Vaporwave trend. Also act as a good template for a music-playing app.
 
 # Features:
 
-## Hidden music player that runs across the router
+### Dedicated music player that runs across the router
 
-~ Music playing remains absolute throughout the router
+### A music catalog that respond to the music player via two-way binding and vice-versa
 
-~ Has a progress bar that responds to time update
+### An interactive song library
 
-~ Can jump to next and previous song, skip progress and jump to random songs
+### Scalable - UI updates automatically even on massive content expansion
 
-~ A click on the song's description will create a new tab to the corresponding artist's bandcamp
+### Respond to viewport change - does not break on mobile or tablet view
 
-## Respond to viewport change - does not break on mobile or tablet view
+### An automatic loop-based display system for songs that responds to library update
 
-## A music catalog that respond to the music player via two-way binding and vice-versa
+### Every song, album and artist has a respective link to their Bandcamp, encouraging visitors to buy their work
 
-~ Respond two-way to the music player and the "now playing" bar
-
-~ Each song responds to mouse clicks, highlight song will pause if clicked again
-
-~ Has a search bar
-
-## An automatic loop-based display system for songs that responds to library update
-
-~ Use javascript file as databanks for easy content addition or removal
+## Easy integration: this code base acts as a good template to quickly build a good music-playing site. Everything has been automated - integration is as simple as replacing mp3 files and changing the html content into your own.
 
 # Build Setup
 
@@ -52,5 +44,4 @@ http-server
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 # vue-vaporwave
