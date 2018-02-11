@@ -1,11 +1,9 @@
 <template>
-  <main style="padding: 50px;">
+  <div>
+    <img src="/static/images/vapeisdead.jpg" style="width: 100%; height: auto;" />
+    <main style="padding: 50px;">
       
       <section id="paragraph">
-
-        <p>
-          <img src="/static/images/vapeisdead.jpg" style="width: 100%; height: auto;" />
-        </p>
 
         <p style="font-weight: bold; font-size: 150%;">
           About Vaporwave
@@ -51,6 +49,7 @@
       </section>
 
     </main>
+  </div>
 </template>
 
 <script>

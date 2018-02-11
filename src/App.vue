@@ -1,15 +1,11 @@
 <template>
-  <v-app style="
-  font-family: 'Fira Mono', monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  " dark>
+  <v-app id="v-app" dark>
     <!-- Header | Static -->
     <app-toolbar></app-toolbar>
     <app-drawer></app-drawer>
     
     <!-- Main content | Dynamic Router -->
-    <router-view style="margin-top: 50px;"></router-view>
+    <router-view style="margin-top: 45px;"></router-view>
     
     <!-- Footer | Static -->
     <app-footer></app-footer>
@@ -36,4 +32,9 @@
 
 <style lang="scss" scoped>
   @import "./assets/app.scss";
+  #v-app {
+    font-family: 'Fira Mono', monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 </style>
