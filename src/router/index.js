@@ -10,7 +10,7 @@ import Artists from '../components/contents/Artists.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: [
     {path: '/', component: MainContent},
     {path: '/textgen', component: TextGenerator},
