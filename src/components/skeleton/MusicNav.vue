@@ -70,6 +70,7 @@
 <script>
   import musicBank from '../../../static/js/musicBank'
   import { mapState } from 'vuex'
+  import { randRange } from '../../../static/js/mathTool'
 
   export default {
     created () {
@@ -159,13 +160,6 @@
         direction === 0 ? this.audio.currentTime -= 10 : this.audio.currentTime += 10
       },
       shuffleSong (songNum) {
-        let randRange = (min, max) => {
-          if (max == null) {
-            max = min
-            min = 0
-          }
-          return Math.floor(Math.random() * (max - min)) + min
-        }
         this.$store.commit('songChange', randRange(0, this.catalogue.length))      
       }
     }

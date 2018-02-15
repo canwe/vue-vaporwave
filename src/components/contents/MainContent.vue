@@ -1,9 +1,9 @@
 <template>
   <div>
     <img src="/static/images/vapeisdead.jpg" style="width: 100%; height: auto;" />
-    <main style="padding: 50px;">
+    <main style="padding: 10px 40px 40px 40px;">
       
-      <section id="paragraph">
+      <section style="margin-bottom: 50px;" id="paragraph">
 
         <p style="font-weight: bold; font-size: 150%;">
           About Vaporwave
@@ -32,7 +32,7 @@
         <p>
           The catch of Vaporwave comes in two parts, the "a e s t h e t i c" and the music 
           itself, which are two sides of somewhat the same coin. Both of these components 
-          relies on a very simple strategy: to invoke nostalgia upon the listener. Many people 
+          relies on a very simple strategy: to invoke nostalgia upon the listener. Many 
           find Vaporwave the odd child of music: unoriginal, cringeworthy and apparently just 
           bits and pieces of stolen music being put together, but for some reason are oddly 
           attracted to it. The magic of Vaporwave is that it takes the listeners back to an era 
@@ -43,7 +43,15 @@
         <img class="bigImg" src="/static/gifs/room.gif">
 
         <p>
-          
+          Vaporwave lures listener into a mixbag state of nostalgia, trepidation and surrealism. 
+          The "anti-consumerism" theme described in the second Youtube video is but a reason 
+          to connect Vaporwave listeners to an era of yesterday, an era of television and 
+          fancy commercials. We all grow up listening to catchy advertising tunes in between 
+          favorite TV shows, cheesy elevator music while holding our parents' hand in the mall. 
+          Vaporwave takes advantage of your distant memory - one both being vague and familiar 
+          at the same time, and try to simulate a trip back to the past. That is the reason why 
+          such a peculiar genre could make an impact on so many listeners, thus forming a trend 
+          that have lasted for several impressive years.
         </p>
 
       </section>

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import MusicBank from '../static/js/musicBank'
+import { mod } from '../static/js/mathTool'
 
 Vue.use(Vuex)
 
@@ -16,7 +17,6 @@ export default new Vuex.Store({
       state.currentSong = index
     },
     songIncr (state, { increment, threshold }) {
-      let mod = (n, m) => ((n % m) + m) % m
       if (increment) state.currentSong = mod(state.currentSong + 1, threshold)
       else state.currentSong = mod(state.currentSong - 1, threshold)
     },

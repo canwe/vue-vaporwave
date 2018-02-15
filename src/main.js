@@ -19,10 +19,4 @@ Vue.config.productionTip = false
 export const bus = new Vue()
 
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App }
-})
+new Vue({ router, store, render: (h) => h(App) }).$mount('#app')

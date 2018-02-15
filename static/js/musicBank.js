@@ -1,5 +1,21 @@
 let musicians = [
   {
+    artist: 'S U R F I N G',
+    path: 'moonlight.mp3',
+    song: 'Moonlight',
+    logo: 'fantasy.jpg',
+    album: 'Deep Fantasy',
+    url: 'https://ssurfing.bandcamp.com/album/deep-fantasy'
+  },
+  {
+    artist: 'Macintosh Plus',
+    path: 'boot.mp3',
+    song: 'ブート',
+    logo: 'floral.jpg',
+    album: 'FLORAL SHOPPE',
+    url: 'https://beerontherug.bandcamp.com/album/floral-shoppe'
+  },
+  {
     artist: '_Lancaster',
     path: 'paradise.mp3',
     song: 'Paradise',
@@ -46,6 +62,14 @@ let musicians = [
     logo: 'shader.jpg',
     album: 'Shader',
     url: 'https://vektroid.bandcamp.com/album/shader-complete'
+  },
+  {
+    artist: 'Eyeliner',
+    path: 'pinot.mp3',
+    song: 'Pinot Noir',
+    logo: 'buynow.jpg',
+    album: 'Buy Now',
+    url: 'https://disasteradio.bandcamp.com/album/buy-now'
   },
   {
     artist: 'ESPRIT 空想',
@@ -104,6 +128,14 @@ let musicians = [
     url: 'https://telepathtelepath.bandcamp.com/album/--5'
   },
   {
+    artist: 'ESPRIT 空想',
+    path: 'showme.mp3',
+    song: 'show me',
+    logo: 'summernight.jpg',
+    album: 'summer night',
+    url: 'http://esprit.100percentelectronica.com/album/summer-night'
+  },
+  {
     artist: 'New Dreams Ltd.',
     path: 'fatal.mp3',
     song: 'Fatal',
@@ -144,6 +176,14 @@ let musicians = [
     url: 'https://vektroid.bandcamp.com/album/shader-complete'
   },
   {
+    artist: 'Eyeliner',
+    path: 'earth.mp3',
+    song: 'Earth',
+    logo: 'eyeliner.jpg',
+    album: 'High Fashion Mood Music',
+    url: 'https://disasteradio.bandcamp.com/album/high-fashion-mood-music'
+  },
+  {
     artist: 'Macintosh Plus',
     path: 'geo.mp3',
     song: '地理',
@@ -158,6 +198,14 @@ let musicians = [
     logo: 'newworld.jpg',
     album: 'New World',
     url: 'https://dreamcatalogue.bandcamp.com/album/new-world'
+  },
+  {
+    artist: 'ESPRIT 空想',
+    path: 'whispers.mp3',
+    song: 'whispers.mp3',
+    logo: 'virtua.jpg',
+    album: 'virtua.zip',
+    url: 'http://esprit.100percentelectronica.com/album/virtua-zip'
   },
   {
     artist: 'Eyeliner',
@@ -224,12 +272,28 @@ let musicians = [
     url: 'https://www.discogs.com/New-Dreams-Ltd-Initiation-Tape-Isle-Of-Avalon-Edition/master/731048'
   },
   {
+    artist: 'Eyeliner',
+    path: 'heel.mp3',
+    song: 'High Heels',
+    logo: 'buynow.jpg',
+    album: 'Buy Now',
+    url: 'https://disasteradio.bandcamp.com/album/buy-now'
+  },
+  {
     artist: 'fuji grid tv',
     path: 'cinemax.mp3',
     song: 'cinemax / speak',
     logo: 'prism.jpg',
     album: 'prism genesis',
     url: 'https://vektroid.bandcamp.com/album/fuji-grid-tv-ex'
+  },
+  {
+    artist: 'Eyeliner',
+    path: 'realdoll.mp3',
+    song: 'Realdoll',
+    logo: 'eyeliner.jpg',
+    album: 'High Fashion Mood Music',
+    url: 'https://disasteradio.bandcamp.com/album/high-fashion-mood-music'
   },
   {
     artist: 'ESPRIT 空想',
