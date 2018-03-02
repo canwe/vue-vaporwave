@@ -103,6 +103,7 @@
     *       return this.$state.store.foo
     *     }
     *   }
+    * And then I can just call this.foo anywhere in the component.
     * So just throw in 10 more states and you'll get how useful mapState is.
     */
     computed: mapState(['currentSong', 'playing', 'volume', 'player']),
@@ -111,13 +112,13 @@
     * to observe changes in these elements.
     */
     watch: {
-      playing: function (newVal, oldVal) {
+      playing (newVal, oldVal) {
         newVal ? this.audio.play() : this.audio.pause()
       },
-      volume: function (newVal, oldVal) {
+      volume (newVal, oldVal) {
         this.audio.volume = newVal
       },
-      currentSong: function (newVal, oldVal) {
+      currentSong (newVal, oldVal) {
         if (!this.playing) this.$store.commit('togglePlaying', true)
         this.audio.pause()
         this.audio = new Audio(
@@ -126,7 +127,7 @@
         this.init()
         this.audio.play()
       },
-      audio: function (newVal, oldVal) {
+      audio (newVal, oldVal) {
         newVal.volume = this.volume
       }
     },

@@ -56,10 +56,9 @@
 
 <script>
   import { bus } from '../../main'
-  import Glitch from 'vue-glitch'
   import TextGlitch from 'vue-text-glitch'
   export default {
-    components: { Glitch, TextGlitch },
+    components: { TextGlitch },
     mounted () {
       this.interval = setInterval(() => {
         this.titleCounter++

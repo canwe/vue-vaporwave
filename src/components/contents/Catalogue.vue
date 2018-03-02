@@ -102,7 +102,7 @@
         * simply do: if (window.innerWidth < 600) { this.viewPerPage = 10 } on a created()
         * lifecycle hook.
         */
-        viewPerPage:          18,
+        viewPerPage:          20,
         search:               '',
         currentPage:          1
       }

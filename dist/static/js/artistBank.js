@@ -13,7 +13,7 @@ let artists = [
     sideImage: 'ramona.jpg',
     features: [
       { album: 'FLORAL SHOPPE', logo: 'floral.jpg', link: 'https://beerontherug.bandcamp.com/album/floral-shoppe' },
-      { album: 'prism genesis', logo: 'prism.jpg', link: 'https://vektroid.bandcamp.com/album/fuji-grid-tv-ex' },
+      { album: 'prism genesis', logo: 'prismgen.jpg', link: 'https://vektroid.bandcamp.com/album/fuji-grid-tv-ex' },
       { album: 'Initiation Tape: Isle of Avalon', logo: 'avalon.jpg', link: 'https://www.discogs.com/New-Dreams-Ltd-Initiation-Tape-Isle-Of-Avalon-Edition/master/731048' },
       { album: 'Shader', logo: 'shader.jpg', link: 'https://vektroid.bandcamp.com/album/shader-complete' }
     ]

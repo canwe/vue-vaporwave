@@ -43,7 +43,7 @@ let musicians = [
     artist: 'fuji grid tv',
     path: 'sundream.mp3',
     song: 'ssun dreamm',
-    logo: 'prism.jpg',
+    logo: 'prismgen.jpg',
     album: 'prism genesis',
     url: 'https://vektroid.bandcamp.com/album/fuji-grid-tv-ex'
   },
@@ -99,7 +99,7 @@ let musicians = [
     artist: 'fuji grid tv',
     path: 'toyota.mp3',
     song: 'toyota / waiting for you',
-    logo: 'prism.jpg',
+    logo: 'prismgen.jpg',
     album: 'prism genesis',
     url: 'https://vektroid.bandcamp.com/album/fuji-grid-tv-ex'
   },
@@ -283,7 +283,7 @@ let musicians = [
     artist: 'fuji grid tv',
     path: 'cinemax.mp3',
     song: 'cinemax / speak',
-    logo: 'prism.jpg',
+    logo: 'prismgen.jpg',
     album: 'prism genesis',
     url: 'https://vektroid.bandcamp.com/album/fuji-grid-tv-ex'
   },

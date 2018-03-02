@@ -1,4 +1,4 @@
-# ATTENTION: Please visit this [demo](https://project-helios-95771.firebaseapp.com/) for the working app.
+# ATTENTION: Please visit this [demo](https://project-helios.ca/) for the working app.
 
 # vue-vaporwave
 
